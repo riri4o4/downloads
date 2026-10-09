@@ -3,136 +3,231 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#101010">
     <title>Wily Foxy — Downloads</title>
     <style>
         * {
             box-sizing: border-box;
         }
 
+        :root {
+            color-scheme: dark;
+            --background: #101010;
+            --surface: #181818;
+            --text: #f2f2f2;
+            --muted: #929292;
+            --border: #303030;
+        }
+
         body {
             margin: 0;
-            background: #111111;
-            color: #eeeeee;
-            font-family: Arial, sans-serif;
+            background: var(--background);
+            color: var(--text);
+            font-family: Arial, Helvetica, sans-serif;
             min-height: 100vh;
         }
 
-        header {
-            padding: 28px 20px;
-            border-bottom: 1px solid #292929;
+        a {
+            color: inherit;
         }
 
         .container {
-            width: 100%;
-            max-width: 850px;
+            width: min(100% - 40px, 900px);
             margin: 0 auto;
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 24px;
-            letter-spacing: 1px;
+        header {
+            border-bottom: 1px solid var(--border);
         }
 
-        main {
-            padding: 55px 20px;
-        }
-
-        h2 {
-            margin: 0 0 10px;
-            font-size: 30px;
-        }
-
-        .subtitle {
-            color: #999999;
-            line-height: 1.6;
-            margin-bottom: 35px;
-        }
-
-        .file-card {
+        .header-inner {
+            min-height: 78px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             gap: 20px;
-            padding: 22px;
-            margin-bottom: 14px;
-            background: #1a1a1a;
-            border: 1px solid #303030;
-            border-radius: 10px;
         }
 
-        .file-card h3 {
-            margin: 0 0 8px;
+        .logo {
             font-size: 17px;
-        }
-
-        .file-card p {
-            margin: 0;
-            color: #999999;
-            font-size: 14px;
-            line-height: 1.5;
-        }
-
-        .download-button {
-            display: inline-block;
-            padding: 11px 17px;
-            background: #eeeeee;
-            color: #111111;
+            font-weight: 800;
+            letter-spacing: 3px;
             text-decoration: none;
-            font-size: 14px;
-            font-weight: bold;
-            border-radius: 6px;
-            white-space: nowrap;
         }
 
-        .download-button:hover {
-            background: #cccccc;
+        .header-label {
+            color: var(--muted);
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        main {
+            padding-top: 100px;
+            padding-bottom: 100px;
+        }
+
+        .eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--muted);
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 24px;
+            height: 1px;
+            background: #eeeeee;
+        }
+
+        h1 {
+            max-width: 750px;
+            margin: 25px 0 20px;
+            font-size: clamp(44px, 9vw, 82px);
+            line-height: 0.98;
+            letter-spacing: -4px;
+        }
+
+        h1 span {
+            color: #777777;
+        }
+
+        .intro {
+            max-width: 480px;
+            color: var(--muted);
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 75px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-heading h2 {
+            margin: 0;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .section-number {
+            color: var(--muted);
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        .empty-state {
+            margin-top: 16px;
+            padding: 30px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+        }
+
+        .empty-state p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.8;
         }
 
         footer {
-            padding: 25px 20px;
-            color: #666666;
-            font-size: 13px;
-            text-align: center;
-            border-top: 1px solid #292929;
+            border-top: 1px solid var(--border);
         }
 
-        @media (max-width: 480px) {
-            main {
-                padding-top: 35px;
+        .footer-inner {
+            min-height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            color: #777777;
+            font-size: 12px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: calc(100% - 32px);
             }
 
-            .file-card {
-                align-items: flex-start;
-                flex-direction: column;
+            .header-inner {
+                min-height: 68px;
+            }
+
+            .header-label {
+                font-size: 9px;
+                letter-spacing: 1px;
+            }
+
+            main {
+                padding-top: 75px;
+                padding-bottom: 70px;
+            }
+
+            h1 {
+                letter-spacing: -2px;
+            }
+
+            .section-heading {
+                margin-top: 55px;
+            }
+
+            .empty-state {
+                padding: 22px;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="container">
-            <h1>WILY FOXY</h1>
+        <div class="container header-inner">
+            <a class="logo" href="./">WILY FOXY</a>
+            <span class="header-label">Official downloads</span>
         </div>
     </header>
 
     <main class="container">
-        <h2>Downloads</h2>
-        <p class="subtitle">
-            Файлы и материалы проекта Wily Foxy.
+        <div class="eyebrow">Wily Foxy project</div>
+
+        <h1>
+            A place for<br>
+            <span>your downloads.</span>
+        </h1>
+
+        <p class="intro">
+            Файлы, материалы и другие ресурсы проекта Wily Foxy.
+            Всё необходимое — в одном месте.
         </p>
 
-        <section class="file-card">
-            <div>
-                <h3>Скоро здесь появятся файлы</h3>
-                <p>Описание и ссылки на скачивание добавим позже.</p>
+        <section>
+            <div class="section-heading">
+                <h2>Доступные файлы</h2>
+                <span class="section-number">01 / DOWNLOADS</span>
+            </div>
+
+            <div class="empty-state">
+                <p>
+                    Здесь скоро появятся файлы для скачивания.
+                    Загляни сюда немного позже.
+                </p>
             </div>
         </section>
     </main>
 
     <footer>
-        Wily Foxy © 2026
+        <div class="container footer-inner">
+            <span>WILY FOXY</span>
+            <span>© 2026</span>
+        </div>
     </footer>
 </body>
 </html>
-Шаг 3. Сохраняем изменения
