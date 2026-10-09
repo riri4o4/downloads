@@ -18,12 +18,24 @@
             --muted: #929292;
             --border: #303030;
         }
+
+        body {
+            position: relative;
+            isolation: isolate;
+            margin: 0;
+            background: var(--background);
+            color: var(--text);
+            font-family: Arial, Helvetica, sans-serif;
+            min-height: 100vh;
+        }
+
         .background-video {
             position: fixed;
             inset: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center;
             z-index: -2;
             pointer-events: none;
         }
@@ -36,12 +48,11 @@
             pointer-events: none;
         }
 
-        body {
-            margin: 0;
-            background: var(--background);
-            color: var(--text);
-            font-family: Arial, Helvetica, sans-serif;
-            min-height: 100vh;
+        header,
+        main,
+        footer {
+            position: relative;
+            z-index: 1;
         }
 
         a {
@@ -145,7 +156,7 @@
         .empty-state {
             margin-top: 16px;
             padding: 30px;
-            background: var(--surface);
+            background: rgba(24, 24, 24, 0.85);
             border: 1px solid var(--border);
             border-radius: 8px;
         }
@@ -205,10 +216,12 @@
     </style>
 </head>
 <body>
-    <video class="background-video" autoplay muted loop playsinline>
+    <video class="background-video" autoplay muted loop playsinline preload="auto">
         <source src="ПОБЕДА.mp4" type="video/mp4">
     </video>
+
     <div class="background-overlay"></div>
+
     <header>
         <div class="container header-inner">
             <a class="logo" href="./">WILY FOXY</a>
